@@ -2,14 +2,26 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\CreateAcc.jpg" />
+    <None Remove="Assets\Logo.png" />
+    <None Remove="Assets\picA.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\CreateAcc.jpg" />
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\picA.jpg" />
   </ItemGroup>
 
 </Project>
