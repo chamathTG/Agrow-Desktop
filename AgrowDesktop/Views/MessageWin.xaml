@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgrowDesktop.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
-        Title="Message"
+        Title="Agrow - Message"
         Height="180"
         Width="320"
         WindowStyle="None"
@@ -17,44 +18,37 @@
     <Grid>
 
         <!-- TOP BAR -->
-        <DockPanel Height="35" Background="#222" VerticalAlignment="Top">
+        <DockPanel Height="35"
+                   Background="#222"
+                   VerticalAlignment="Top">
 
-            <TextBlock Text="MESSAGE"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   Margin="10,0,0,0"/>
-
-            <Button Content="X"
-                Width="40"
-                Height="40"
-                HorizontalAlignment="Right"
-                DockPanel.Dock="Right"
-                Background="Transparent"
-                Foreground="White"
-                BorderBrush="Transparent"
-                Click="Close_Click"/>
+            <TextBlock Text="Message"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
+            
         </DockPanel>
 
         <!-- MESSAGE -->
         <TextBlock x:Name="MessageText"
-               Text="Message"
-               FontSize="15"
-               TextWrapping="Wrap"
-               TextAlignment="Center"
-               Margin="20,60,20,0"
-               VerticalAlignment="Top"/>
+                   Text="Message"
+                   FontSize="15"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   Margin="20,60,20,0"
+                   VerticalAlignment="Top"/>
 
         <!-- OK BUTTON -->
         <Button Content="OK"
-            Width="100"
-            Height="30"
-            Background="ForestGreen"
-            Foreground="White"
-            BorderBrush="Transparent"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Margin="0,0,0,20"
-            Click="Ok_Click"/>
+                Width="100"
+                Height="30"
+                Background="ForestGreen"
+                Foreground="White"
+                BorderThickness="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,20"
+                Click="Ok_Click"/>
 
     </Grid>
 
