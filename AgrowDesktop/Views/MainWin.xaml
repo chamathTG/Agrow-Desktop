@@ -138,7 +138,7 @@
                    TextDecorations="Underline"
                    Foreground="CadetBlue"
                    FontFamily="Space Grotesk"
-                   Margin="186,430,0,0"
+                   Margin="186,430,0,195"
                    HorizontalAlignment="Left"
                    Cursor="Hand"
                    MouseLeftButtonUp="Forogot_Pass"
@@ -148,7 +148,7 @@
                    FontSize="13"
                    Foreground="Gray"
                    FontFamily="Space Grotesk"
-                   Margin="26,430,0,0"
+                   Margin="26,430,0,195"
                    HorizontalAlignment="Left"/>
 
     </Grid>
