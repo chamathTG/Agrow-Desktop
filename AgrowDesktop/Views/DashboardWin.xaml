@@ -62,20 +62,31 @@
                        LastChildFill="False"
                        MouseDown="TopBar_MouseDown">
 
+                <!-- GREEN LINE -->
+                <Border Width="5"
+                        Background="#3EA84A"
+                        DockPanel.Dock="Left"/>
 
-                <!-- APP TITLE -->
+                <!-- TITLE -->
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center"
                             DockPanel.Dock="Left"
-                            Margin="14,0,0,0">
+                            Margin="12,0,0,0">
 
-                    <TextBlock Text=" DASHBOARD"
-                               Foreground="#888"
+                    <TextBlock Text="AGROW"
+                               Foreground="#3EA84A"
+                               FontWeight="Bold"
+                               FontSize="15"
+                               VerticalAlignment="Center"/>
+
+                    <TextBlock Text=" · DASHBOARD"
+                               Foreground="#A0A0A0"
                                FontSize="13"
                                Margin="6,0,0,0"
                                VerticalAlignment="Center"/>
 
                 </StackPanel>
+
                 <!-- WINDOW BUTTONS -->
                 <StackPanel Orientation="Horizontal"
                             DockPanel.Dock="Right">
@@ -107,13 +118,13 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- TOP STAT CARDS -->
+                <!-- TOP CARDS -->
                 <UniformGrid Grid.Row="0"
                              Columns="4"
                              Margin="12,12,12,0">
 
                     <!-- USERS -->
-                    <Border Background="#1F2937"
+                    <Border Background="#111827"
                             CornerRadius="10"
                             Margin="0,0,10,0"
                             Padding="15">
@@ -130,22 +141,22 @@
                                 <TextBlock Text="Total Users"
                                            Foreground="White"
                                            FontSize="13"
-                                           Opacity="0.85"/>
+                                           Opacity="0.8"/>
 
                                 <TextBlock x:Name="StatTotalUsers"
                                            Text="0"
+                                           Foreground="White"
                                            FontSize="30"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
+                                           FontWeight="Bold"/>
 
                             </StackPanel>
 
-                            <materialDesign:PackIcon Grid.Column="1"
-                                                     Kind="AccountGroup"
+                            <materialDesign:PackIcon Kind="AccountGroup"
                                                      Width="42"
                                                      Height="42"
                                                      Foreground="White"
                                                      Opacity="0.25"
+                                                     Grid.Column="1"
                                                      VerticalAlignment="Center"/>
 
                         </Grid>
@@ -170,22 +181,22 @@
                                 <TextBlock Text="Products"
                                            Foreground="White"
                                            FontSize="13"
-                                           Opacity="0.85"/>
+                                           Opacity="0.8"/>
 
                                 <TextBlock x:Name="StatTotalProducts"
                                            Text="0"
+                                           Foreground="White"
                                            FontSize="30"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
+                                           FontWeight="Bold"/>
 
                             </StackPanel>
 
-                            <materialDesign:PackIcon Grid.Column="1"
-                                                     Kind="Basket"
+                            <materialDesign:PackIcon Kind="Basket"
                                                      Width="42"
                                                      Height="42"
                                                      Foreground="White"
                                                      Opacity="0.25"
+                                                     Grid.Column="1"
                                                      VerticalAlignment="Center"/>
 
                         </Grid>
@@ -210,22 +221,22 @@
                                 <TextBlock Text="Orders"
                                            Foreground="White"
                                            FontSize="13"
-                                           Opacity="0.85"/>
+                                           Opacity="0.8"/>
 
                                 <TextBlock x:Name="StatTotalOrders"
                                            Text="0"
+                                           Foreground="White"
                                            FontSize="30"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
+                                           FontWeight="Bold"/>
 
                             </StackPanel>
 
-                            <materialDesign:PackIcon Grid.Column="1"
-                                                     Kind="Cart"
+                            <materialDesign:PackIcon Kind="Cart"
                                                      Width="42"
                                                      Height="42"
                                                      Foreground="White"
                                                      Opacity="0.25"
+                                                     Grid.Column="1"
                                                      VerticalAlignment="Center"/>
 
                         </Grid>
@@ -246,25 +257,25 @@
 
                             <StackPanel>
 
-                                <TextBlock Text="Pending"
+                                <TextBlock Text="Pending Orders"
                                            Foreground="White"
                                            FontSize="13"
-                                           Opacity="0.85"/>
+                                           Opacity="0.8"/>
 
                                 <TextBlock x:Name="StatPendingOrders"
                                            Text="0"
+                                           Foreground="White"
                                            FontSize="30"
-                                           FontWeight="Bold"
-                                           Foreground="White"/>
+                                           FontWeight="Bold"/>
 
                             </StackPanel>
 
-                            <materialDesign:PackIcon Grid.Column="1"
-                                                     Kind="ClockAlert"
+                            <materialDesign:PackIcon Kind="ClockAlert"
                                                      Width="42"
                                                      Height="42"
                                                      Foreground="White"
                                                      Opacity="0.25"
+                                                     Grid.Column="1"
                                                      VerticalAlignment="Center"/>
 
                         </Grid>
@@ -273,7 +284,7 @@
 
                 </UniformGrid>
 
-                <!-- TABS -->
+                <!-- TAB AREA -->
                 <Border Grid.Row="1"
                         Margin="12"
                         Background="White"
@@ -283,7 +294,7 @@
 
                     <TabControl>
 
-                        <!-- USERS -->
+                        <!-- USERS TAB -->
                         <TabItem Header="Users">
 
                             <Grid Margin="12">
@@ -328,6 +339,14 @@
                                             HorizontalAlignment="Right"
                                             Margin="0,10,0,0">
 
+                                    <!-- EXPORT -->
+                                    <Button Content="Export CSV"
+                                            Width="120"
+                                            Margin="0,0,8,0"
+                                            Background="#6B7280"
+                                            Style="{StaticResource MainButton}"
+                                            Click="ExportUsers_Click"/>
+
                                     <Button Content="Block / Unblock"
                                             Width="150"
                                             Margin="0,0,8,0"
@@ -347,7 +366,7 @@
 
                         </TabItem>
 
-                        <!-- PRODUCTS -->
+                        <!-- PRODUCTS TAB -->
                         <TabItem Header="Products">
 
                             <Grid Margin="12">
@@ -388,6 +407,14 @@
                                             HorizontalAlignment="Right"
                                             Margin="0,10,0,0">
 
+                                    <!-- EXPORT -->
+                                    <Button Content="Export CSV"
+                                            Width="120"
+                                            Margin="0,0,8,0"
+                                            Background="#6B7280"
+                                            Style="{StaticResource MainButton}"
+                                            Click="ExportProducts_Click"/>
+
                                     <Button Content="Delete Product"
                                             Width="150"
                                             Margin="0,0,8,0"
@@ -407,7 +434,7 @@
 
                         </TabItem>
 
-                        <!-- ORDERS -->
+                        <!-- ORDERS TAB -->
                         <TabItem>
 
                             <TabItem.Header>
@@ -483,6 +510,14 @@
                                             Orientation="Horizontal"
                                             HorizontalAlignment="Right"
                                             Margin="0,10,0,0">
+
+                                    <!-- EXPORT -->
+                                    <Button Content="Export CSV"
+                                            Width="120"
+                                            Margin="0,0,8,0"
+                                            Background="#6B7280"
+                                            Style="{StaticResource MainButton}"
+                                            Click="ExportOrders_Click"/>
 
                                     <ComboBox x:Name="StatusBox"
                                               Width="150"
