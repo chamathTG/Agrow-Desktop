@@ -1,9 +1,10 @@
-﻿using AgrowDesktop.Services;
-using AgrowDesktop.Models;
-using System.Windows;
-using System.IO;
+﻿using AgrowDesktop.Models;
+using AgrowDesktop.Services;
+using Google.Protobuf;
 using Microsoft.Win32;
+using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace AgrowDesktop.Views
 {
@@ -24,8 +25,11 @@ namespace AgrowDesktop.Views
         // CUSTOM MESSAGE
         private void ShowMsg(string text, bool success = true)
         {
-            MessageWin msg = new MessageWin(text, success);
-            msg.ShowDialog();
+            MessageWin message = new MessageWin();
+
+            message.ColTxtHandler(text, success);
+            message.OpacityHandler(this);
+            message.ShowDialog();
         }
 
         // ─────────────────────────────────────────────

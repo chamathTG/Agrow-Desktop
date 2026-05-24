@@ -5,9 +5,6 @@ using System.Windows.Input;
 
 namespace AgrowDesktop.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWin.xaml
-    /// </summary>
     public partial class MainWin : Window
     {
         public MainWin()
@@ -45,10 +42,15 @@ namespace AgrowDesktop.Views
         // LoadLoginBtn
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            MessageWin message = new MessageWin();
+
 
             if (string.IsNullOrWhiteSpace(UsernameBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password))
             {
-                new MessageWin("Please fill all fields before login!", false).ShowDialog();
+                message.ColTxtHandler("Please fill all the fields before login!", false);
+                message.OpacityHandler(this);
+                message.ShowDialog();
+
                 return;
             }
 
@@ -58,20 +60,19 @@ namespace AgrowDesktop.Views
 
             if (admin != null)
             {
-                new MessageWin("Login successful!", true).ShowDialog();
+                message.ColTxtHandler("Login Successful!", true);
+                message.OpacityHandler(this);
+                message.ShowDialog();
 
                 DashboardWin dash = new DashboardWin();
-
-                // WeCan Pass Username To DashWin
-                // dash.UserText.Text = admin.Username;
-
                 dash.Show();
-
                 this.Close();
             }
             else
             {
-                new MessageWin("Invalid username or password!", false).ShowDialog();
+                message.ColTxtHandler("Invalid Username or Password!", false);
+                message.OpacityHandler(this);
+                message.ShowDialog();
 
                 UsernameBox.Clear();
                 PasswordBox.Clear();
@@ -82,6 +83,7 @@ namespace AgrowDesktop.Views
         private void Forogot_Pass(object sender, RoutedEventArgs e)
         {
             ForgetPassWin win = new ForgetPassWin();
+            win.Owner = this;
             win.ShowDialog();
         }
     }

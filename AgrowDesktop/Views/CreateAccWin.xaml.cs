@@ -44,13 +44,18 @@ namespace AgrowDesktop.Views
         // SignUpBtn
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
+            MessageWin message = new MessageWin();
+            
             // CheckEmptyFields
             if (string.IsNullOrWhiteSpace(NicBox.Text) ||
                 string.IsNullOrWhiteSpace(UserNBox.Text) ||
                 string.IsNullOrWhiteSpace(EmailBox.Text) ||
                 string.IsNullOrWhiteSpace(PasswordBox.Password))
             {
-                new MessageWin("Please fill all fields to complete sign up!", false).ShowDialog();
+                message.ColTxtHandler("Please fill all fields to complete sign up!", false);
+                message.OpacityHandler(this);
+                message.ShowDialog();
+
                 return;
             }
 
@@ -66,7 +71,9 @@ namespace AgrowDesktop.Views
             bool success = result.ToLower().Contains("success");
 
             // ShowMsg
-            new MessageWin(result, success).ShowDialog();
+            message.ColTxtHandler(result, success);
+            message.OpacityHandler(this);
+            message.ShowDialog();
 
             //ClearAll
             NicBox.Clear();

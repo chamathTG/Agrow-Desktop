@@ -31,11 +31,12 @@
 
         <!-- MESSAGE -->
         <TextBlock x:Name="MessageText"
-                   Text="Message"
+                   Text="Message!"
+                   FontWeight="Bold"
                    FontSize="15"
                    TextWrapping="Wrap"
                    TextAlignment="Center"
-                   Margin="20,60,20,0"
+                   Margin="20,70,20,0"
                    VerticalAlignment="Top"/>
 
         <!-- OK BUTTON -->

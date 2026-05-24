@@ -1,16 +1,30 @@
 ﻿using AgrowDesktop.ViewModels;
+using Google.Protobuf;
 using System.Windows;
 
 namespace AgrowDesktop.Views
 {
-    /// <summary>
-    /// Interaction logic for ForgetPassWin.xaml
-    /// </summary>
     public partial class ForgetPassWin : Window
     {
         public ForgetPassWin()
         {
             InitializeComponent();
+
+            this.Loaded += (s, e) =>
+            {
+                if(this.Owner != null)
+                {
+                    this.Owner.Opacity = 0.5;
+                }
+            };
+
+            this.Closed += (s, e) =>
+            {
+                if (this.Owner != null)
+                {
+                    this.Owner.Opacity = 1;
+                }
+            };
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -20,28 +34,31 @@ namespace AgrowDesktop.Views
 
         private void ResetPassword_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NicBox.Text) ||
-                string.IsNullOrWhiteSpace(NewPasswordBox.Password))
+            MessageWin message = new MessageWin();
+
+            if (string.IsNullOrWhiteSpace(NicBox.Text) || string.IsNullOrWhiteSpace(NewPasswordBox.Password))
             {
-                new MessageWin("Please fill all fields!", false).ShowDialog();
+                message.ColTxtHandler("Please fill all the fields!", false);
+                message.OpacityHandler(this);
+                message.ShowDialog();
+
                 return;
             }
 
             var vm = new ForgotPassViewModel();
 
-            string result = vm.ResetPassword(
-                NicBox.Text,
-                NewPasswordBox.Password
-            );
+            string result = vm.ResetPassword(NicBox.Text, NewPasswordBox.Password);
 
             bool success = result.ToLower().Contains("success");
 
-            new MessageWin(result, success).ShowDialog();
+            message.ColTxtHandler(result, success);
+            message.OpacityHandler(this);
+            message.ShowDialog();
 
             NicBox.Clear();
             NewPasswordBox.Clear();
 
-            if (success)
+            if(success)
             {
                 this.Close();
             }
