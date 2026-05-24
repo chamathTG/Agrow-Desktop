@@ -105,5 +105,130 @@ namespace AgrowDesktop.Services
             return null;
         }
 
+        public List<UserModel> GetAllUsers()
+        {
+            List<UserModel> list = new();
+
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "SELECT * FROM users";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(new UserModel
+                {
+                    Id = Convert.ToInt32(reader["id"]),
+                    Role = reader["role"].ToString(),
+                    Username = reader["username"].ToString(),
+                    Mobile = reader["mobile"].ToString(),
+                    IsBlocked = Convert.ToBoolean(reader["is_blocked"])
+                });
+            }
+
+            return list;
+        }
+
+        public bool ToggleBlockUser(int userId, bool isBlocked)
+        {
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "UPDATE users SET is_blocked=@block WHERE id=@id";
+
+            using var cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@block", isBlocked);
+            cmd.Parameters.AddWithValue("@id", userId);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
+        public List<ProductModel> GetAllProducts()
+        {
+            List<ProductModel> list = new();
+
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "SELECT * FROM products";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(new ProductModel
+                {
+                    Id = Convert.ToInt32(reader["id"]),
+                    FarmerName = reader["farmer_name"].ToString(),
+                    Title = reader["title"].ToString(),
+                    Price = Convert.ToDouble(reader["price"])
+                });
+            }
+
+            return list;
+        }
+
+        public bool DeleteProduct(int id)
+        {
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "DELETE FROM products WHERE id=@id";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
+        public List<OrderModel> GetAllOrders()
+        {
+            List<OrderModel> list = new();
+
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "SELECT * FROM orders";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(new OrderModel
+                {
+                    Id = Convert.ToInt32(reader["id"]),
+                    CustomerName = reader["customer_name"].ToString(),
+                    FarmerName = reader["farmer_name"].ToString(),
+                    ProductTitle = reader["product_title"].ToString(),
+                    Qty = Convert.ToInt32(reader["qty"]),
+                    Total = Convert.ToDouble(reader["total"]),
+                    Status = reader["status"].ToString()
+                });
+            }
+
+            return list;
+        }
+
+        public bool UpdateOrderStatus(int orderId, string status)
+        {
+            using var conn = new MySqlConnection(connString);
+            conn.Open();
+
+            string sql = "UPDATE orders SET status=@status WHERE id=@id";
+
+            using var cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@status", status);
+            cmd.Parameters.AddWithValue("@id", orderId);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
     }
 }
