@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgrowDesktop.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
         Title=""
@@ -16,43 +17,56 @@
         Top="100">
 
     <Grid>
+        
         <DockPanel VerticalAlignment="Top"
-       Height="40"
-       Background="#222"
-       MouseDown="TopBar_MouseDown"
-       LastChildFill="False">
+                   Height="40"
+                   Background="#222"
+                   MouseDown="TopBar_MouseDown"
+                   LastChildFill="False">
 
             <!-- Title -->
-            <TextBlock Text="SIGN UP"
-           Foreground="White"
-           VerticalAlignment="Center"
-           Margin="10,0,0,0"/>
+            <TextBlock Text="Sign Up"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
 
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal"
-            HorizontalAlignment="Right"
-            DockPanel.Dock="Right">
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right">
 
-                <Button Content="_"
-            Width="40"
-            Height="40"
-            Click="Minimize_Click"
-            Background="Transparent"
-            Foreground="White"
-            BorderBrush="Transparent"/>
+                <Button Content="{materialDesign:PackIcon Kind=Minus, Size=20}"
+                        Width="40"
+                        Height="40"
+                        Padding="0"
+                        BorderThickness="0"
+                        materialDesign:ButtonAssist.CornerRadius="0"
+                        materialDesign:ElevationAssist.Elevation="Dp0"
+                        Click="Minimize_Click"
+                        Background="#4c4c4c"
+                        Foreground="White"/>
 
-                <Button Content="X"
-            Width="40"
-            Height="40"
-            Click="Close_Click"
-            Background="Transparent"
-            Foreground="White"
-            BorderBrush="Transparent"/>
+                <Button Content="{materialDesign:PackIcon Kind=Close, Size=20}"
+                        Width="40"
+                        Height="40"
+                        Padding="0"
+                        BorderThickness="0"
+                        materialDesign:ButtonAssist.CornerRadius="0"
+                        materialDesign:ElevationAssist.Elevation="Dp0"
+                        Click="Close_Click"
+                        Background="#ff1a1a"
+                        Foreground="White"/>
+                
             </StackPanel>
 
         </DockPanel>
-        <Image Source="/Assets/Logo.png" Margin="18,57,873,525" RenderTransformOrigin="0.574,0.949" />
-        <Image Source="/Assets/CreateAcc.jpg" Margin="154,40,-160,0" />
+        
+        <Image Source="/Assets/Logo.png"
+               Margin="18,70,873,515"
+               RenderTransformOrigin="0.574,0.949" />
+        
+        <Image Source="/Assets/CreateAcc.jpg"
+               Margin="154,40,-160,0" />
 
         <TextBlock Text="Sign Up"
                    FontSize="25"
@@ -62,92 +76,79 @@
                    HorizontalAlignment="Left"/>
 
         <TextBlock Text="Alradey have an account?"
-           FontSize="16"
-           FontFamily="Poppins"
-           Margin="25,218,0,405"
-           HorizontalAlignment="Left"/>
+                   FontSize="16"
+                   FontFamily="Poppins"
+                   Margin="25,210,0,405"
+                   HorizontalAlignment="Left"/>
 
         <TextBlock Text="Login"
-       FontSize="16"
-       Foreground="ForestGreen"
-       FontFamily="Space Grotesk"
-       Margin="25,239,0,384"
-       HorizontalAlignment="Left"
-       Cursor="Hand"
-       MouseLeftButtonUp="Login_Win"/>
-
-        <TextBlock Text="Verified NIC"
-       FontSize="16"
-       FontFamily="Poppins"
-       Margin="25,289,0,334"
-       HorizontalAlignment="Left"/>
+                   FontSize="16"
+                   TextDecorations="Underline"
+                   Foreground="ForestGreen"
+                   FontFamily="Space Grotesk"
+                   Margin="25,230,0,384"
+                   HorizontalAlignment="Left"
+                   Cursor="Hand"
+                   MouseLeftButtonUp="Login_Win"/>
 
         <TextBox x:Name="NicBox"
-     Height="30"
-     FontSize="15"
-     Margin="25,313,721,302"/>
-
-        <TextBlock Text="Username"
-        FontSize="16"
-        FontFamily="Poppins"
-        Margin="25,354,0,269"
-        HorizontalAlignment="Left"/>
+                 Height="45"
+                 Padding="10"
+                 FontSize="15"
+                 Margin="25,280,721,302"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 materialDesign:HintAssist.Hint="Verified NIC"
+                 materialDesign:HintAssist.Foreground="Black"
+                 materialDesign:TextFieldAssist.ClearButtonSize="19"
+                 materialDesign:TextFieldAssist.HasClearButton="True"/>
 
         <TextBox x:Name="UserNBox"
-     Height="30"
-     FontSize="15"
-     Margin="25,378,721,237"/>
-
-        <TextBlock Text="Email"
-        FontSize="16"
-        FontFamily="Poppins"
-        Margin="25,420,0,203"
-        HorizontalAlignment="Left"/>
+                 Height="45"
+                 Padding="10"
+                 FontSize="15"
+                 Margin="25,330,721,237"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 materialDesign:HintAssist.Hint="Username"
+                 materialDesign:HintAssist.Foreground="Black"
+                 materialDesign:TextFieldAssist.ClearButtonSize="19"
+                 materialDesign:TextFieldAssist.HasClearButton="True"/>
 
         <TextBox x:Name="EmailBox"
-     Height="30"
-     FontSize="15"
-     Margin="25,444,721,171"/>
+                 Height="45"
+                 Padding="10"
+                 FontSize="15"
+                 Margin="25,380,721,171"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 materialDesign:HintAssist.Hint="Email"
+                 materialDesign:HintAssist.Foreground="Black"
+                 materialDesign:TextFieldAssist.ClearButtonSize="19"
+                 materialDesign:TextFieldAssist.HasClearButton="True"/>
+        
 
-        <TextBlock Text="Password"
-               FontSize="16"
-               FontFamily="Poppins"
-               Margin="25,486,0,137"
-               HorizontalAlignment="Left"/>
-
-        <!-- Hidden Password -->
-        <PasswordBox x:Name="PasswordHidden"
-         Height="30"
-         Margin="27,512,721,103"
-         PasswordChanged="PasswordHidden_PasswordChanged"/>
-
-        <!-- Visible Password -->
-        <TextBox x:Name="PasswordVisible"
-     Height="30"
-     Margin="27,512,721,103"
-     Visibility="Collapsed"/>
-
-        <!-- Show/Hide Button -->
-        <Button Content="👁"
-    Width="35"
-    Height="30"
-    Margin="254,512,0,103"
-    HorizontalAlignment="Left"
-    Click="ShowPassword_Click"/>
+        <PasswordBox x:Name="PasswordBox"
+                     Height="45"
+                     Padding="10"
+                     FontSize="15"
+                     Margin="25,430,721,103"
+                     Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
+                     materialDesign:HintAssist.Hint="Password"
+                     materialDesign:HintAssist.Foreground="Black"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     materialDesign:TextFieldAssist.ClearButtonSize="19"/>
 
         <Button Content="Sign Up"
-        Width="264"
-        Height="40"
-        Margin="25,562,0,0"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Top"
-        Background="ForestGreen"
-        Foreground="White"
-        FontWeight="Bold"
-        FontFamily="Space Grotesk"
-        FontSize="16"
-        BorderBrush="Transparent"
-        Click="SignUp_Click"/>
+                Width="264"
+                Height="40"
+                Margin="25,550,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="ForestGreen"
+                Foreground="White"
+                FontWeight="Bold"
+                FontFamily="Space Grotesk"
+                FontSize="16"
+                BorderThickness="0"
+                Click="SignUp_Click"/>
 
     </Grid>
 

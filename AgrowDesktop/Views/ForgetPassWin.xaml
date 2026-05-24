@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgrowDesktop.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
         Title=""
@@ -20,87 +21,96 @@
 
         <!-- TOP BAR -->
         <DockPanel VerticalAlignment="Top"
-               Height="40"
-               Background="#222">
+                   Height="40"
+                   Background="#222">
 
-            <TextBlock Text="RESET PASSWORD"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   Margin="10,0,0,0"/>
+            <TextBlock Text="Reset Password"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
 
-            <Button Content="X"
-                Width="40"
-                Height="40"
-                HorizontalAlignment="Right"
-                DockPanel.Dock="Right"
-                Background="Transparent"
-                Foreground="White"
-                BorderBrush="Transparent"
-                Click="Close_Click"/>
+            <Button Content="{materialDesign:PackIcon Kind=Close, Size=20}"
+                    Width="40"
+                    Height="40"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    materialDesign:ElevationAssist.Elevation="Dp0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    DockPanel.Dock="Right"
+                    Background="#ff1a1a"
+                    Foreground="White"
+                    Click="Close_Click"/>
+            
         </DockPanel>
 
         <!-- Title -->
         <TextBlock Text="Forgot Password"
-               FontSize="24"
-               FontWeight="Bold"
-               FontFamily="Poppins"
-               Margin="30,65,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"/>
+                   FontSize="24"
+                   FontWeight="Bold"
+                   FontFamily="Poppins"
+                   Margin="30,65,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
 
         <!-- Subtitle -->
         <TextBlock Text="Enter your NIC and new password"
-               FontSize="14"
-               Foreground="Gray"
-               FontFamily="Poppins"
-               Margin="30,100,0,0"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"/>
+                   FontSize="14"
+                   Foreground="Gray"
+                   FontFamily="Poppins"
+                   Margin="30,96,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
 
         <TextBlock Text="NIC Number"
-       FontSize="15"
-       FontFamily="Poppins"
-       Margin="30,140,0,0"
-       HorizontalAlignment="Left"
-       VerticalAlignment="Top"/>
+                   FontSize="15"
+                   FontFamily="Poppins"
+                   Margin="30,130,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
 
         <TextBlock Text="New Password"
-       FontSize="15"
-       FontFamily="Poppins"
-       Margin="30,215,0,0"
-       HorizontalAlignment="Left"
-       VerticalAlignment="Top"/>
+                   FontSize="15"
+                   FontFamily="Poppins"
+                   Margin="30,205,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
 
         <!-- NIC -->
         <TextBox x:Name="NicBox"
-     Height="35"
-     Width="320"
-     FontSize="15"
-     Margin="30,165,0,0"
-     HorizontalAlignment="Left"
-     VerticalAlignment="Top"/>
+                 Height="45"
+                 Width="320"
+                 Padding="10"
+                 FontSize="15"
+                 Margin="30,150,0,0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
 
         <!-- New Password -->
         <PasswordBox x:Name="NewPasswordBox"
-         Height="35"
-         Width="320"
-         Margin="30,240,0,0"
-         HorizontalAlignment="Left"
-         VerticalAlignment="Top"/>
+                     Height="45"
+                     Width="320"
+                     Padding="10"
+                     FontSize="15"
+                     Margin="30,225,0,0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"/>
 
         <!-- Button -->
         <Button Content="Reset Password"
-    Width="320"
-    Height="40"
-    Margin="30,295,0,0"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top"
-    Background="ForestGreen"
-    Foreground="White"
-    FontWeight="Bold"
-    FontFamily="Space Grotesk"
-    BorderBrush="Transparent"
-    Click="ResetPassword_Click"/>
+                Width="320"
+                Height="40"
+                Margin="30,295,0,0"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="ForestGreen"
+                Foreground="White"
+                FontWeight="Bold"
+                FontFamily="Space Grotesk"
+                Click="ResetPassword_Click"/>
     </Grid>
 
 </Window>

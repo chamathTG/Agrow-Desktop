@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AgrowDesktop.Models
+﻿namespace AgrowDesktop.Models
 {
     public class AdminModel
     {

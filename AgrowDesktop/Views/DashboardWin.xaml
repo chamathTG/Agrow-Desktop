@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgrowDesktop.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
         Title=""
@@ -16,41 +17,51 @@
         Top="100">
 
     <Grid>
+        
         <!-- TOP BAR -->
         <DockPanel VerticalAlignment="Top"
-       Height="40"
-       Background="#222"
-       MouseDown="TopBar_MouseDown"
-       LastChildFill="False">
+                   Height="40"
+                   Background="#222"
+                   MouseDown="TopBar_MouseDown"
+                   LastChildFill="False">
 
             <!-- Title -->
-            <TextBlock Text="DASHBOARD"
-           Foreground="White"
-           VerticalAlignment="Center"
-           Margin="10,0,0,0"/>
+            <TextBlock Text="Dashboard"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
 
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal"
-            HorizontalAlignment="Right"
-            DockPanel.Dock="Right">
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right">
 
-                <Button Content="_"
-            Width="40"
-            Height="40"
-            Click="Minimize_Click"
-            Background="Transparent"
-            Foreground="White"
-            BorderBrush="Transparent"/>
+                <Button Content="{materialDesign:PackIcon Kind=Minus, Size=20}"
+                        Width="40"
+                        Height="40"
+                        Padding="0"
+                        materialDesign:ButtonAssist.CornerRadius="0"
+                        materialDesign:ElevationAssist.Elevation="Dp0"
+                        Click="Minimize_Click"
+                        Background="#4c4c4c"
+                        Foreground="White"
+                        BorderThickness="0"/>
 
-                <Button Content="X"
-            Width="40"
-            Height="40"
-            Click="Close_Click"
-            Background="Transparent"
-            Foreground="White"
-            BorderBrush="Transparent"/>
+                <Button Content="{materialDesign:PackIcon Kind=Close, Size=20}"
+                        Width="40"
+                        Height="40"
+                        Padding="0"
+                        materialDesign:ButtonAssist.CornerRadius="0"
+                        materialDesign:ElevationAssist.Elevation="Dp0"
+                        Click="Close_Click"
+                        Background="#ff1a1a"
+                        Foreground="White"
+                        BorderThickness="0"/>
+                
             </StackPanel>
+            
         </DockPanel>
+        
     </Grid>
 
 </Window>

@@ -1,16 +1,7 @@
 ﻿using AgrowDesktop.Models;
 using AgrowDesktop.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AgrowDesktop.Views
 {
@@ -24,7 +15,7 @@ namespace AgrowDesktop.Views
             InitializeComponent();
         }
 
-        //TopbarOP
+        // TopbarOP
         private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -40,52 +31,22 @@ namespace AgrowDesktop.Views
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
-        //LoadCrateNewPage
+        // LoadCrateNewPage
         private void Create_New(object sender, MouseButtonEventArgs e)
         {
             CreateAccWin win = new CreateAccWin();
             win.Show();
-
             this.Close();
         }
 
-        //PasswordShowHide
-        private bool isPasswordVisible = false;
-
-        private void ShowPassword_Click(object sender, RoutedEventArgs e)
-        {
-            if (isPasswordVisible)
-            {
-                PasswordHidden.Password = PasswordVisible.Text;
-
-                PasswordHidden.Visibility = Visibility.Visible;
-                PasswordVisible.Visibility = Visibility.Collapsed;
-
-                isPasswordVisible = false;
-            }
-            else
-            {
-                PasswordVisible.Text = PasswordHidden.Password;
-
-                PasswordVisible.Visibility = Visibility.Visible;
-                PasswordHidden.Visibility = Visibility.Collapsed;
-
-                isPasswordVisible = true;
-            }
-        }
-
-        //LoadLoginBtn
+        // LoadLoginBtn
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string password = PasswordHidden.Visibility == Visibility.Visible
-        ? PasswordHidden.Password
-        : PasswordVisible.Text;
 
-            if (string.IsNullOrWhiteSpace(UsernameBox.Text) ||
-                string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(UsernameBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password))
             {
                 new MessageWin("Please fill all fields before login!", false).ShowDialog();
                 return;
@@ -93,7 +54,7 @@ namespace AgrowDesktop.Views
 
             var vm = new LoginViewModel();
 
-            AdminModel admin = vm.Login(UsernameBox.Text, password);
+            AdminModel admin = vm.Login(UsernameBox.Text, PasswordBox.Password);
 
             if (admin != null)
             {
@@ -101,7 +62,7 @@ namespace AgrowDesktop.Views
 
                 DashboardWin dash = new DashboardWin();
 
-                //WeCan Pass UsernameToDashWin
+                // WeCan Pass Username To DashWin
                 // dash.UserText.Text = admin.Username;
 
                 dash.Show();
@@ -113,16 +74,15 @@ namespace AgrowDesktop.Views
                 new MessageWin("Invalid username or password!", false).ShowDialog();
 
                 UsernameBox.Clear();
-                PasswordHidden.Clear();
-                PasswordVisible.Clear();
+                PasswordBox.Clear();
             }
         }
 
-        //ForogotPssClick
+        // ForogotPssClick
         private void Forogot_Pass(object sender, RoutedEventArgs e)
         {
             ForgetPassWin win = new ForgetPassWin();
-            win.Show();
+            win.ShowDialog();
         }
     }
 }

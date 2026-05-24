@@ -1,15 +1,6 @@
 ﻿using AgrowDesktop.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AgrowDesktop.Views
 {
@@ -23,7 +14,7 @@ namespace AgrowDesktop.Views
             InitializeComponent();
         }
 
-        //TopbarOP
+        // TopbarOP
         private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -42,35 +33,7 @@ namespace AgrowDesktop.Views
             this.Close();
         }
 
-        private void PasswordHidden_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (PasswordVisible.Visibility == Visibility.Visible)
-            {
-                PasswordVisible.Text = PasswordHidden.Password;
-            }
-        }
-
-        private void ShowPassword_Click(object sender, RoutedEventArgs e)
-        {
-            if (PasswordHidden.Visibility == Visibility.Visible)
-            {
-                //ShowPss
-                PasswordVisible.Text = PasswordHidden.Password;
-
-                PasswordHidden.Visibility = Visibility.Collapsed;
-                PasswordVisible.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                //HidePass
-                PasswordHidden.Password = PasswordVisible.Text;
-
-                PasswordVisible.Visibility = Visibility.Collapsed;
-                PasswordHidden.Visibility = Visibility.Visible;
-            }
-        }
-
-        //LoadLoginWin
+        // LoadLoginWin
         private void Login_Win(object sender, RoutedEventArgs e)
         {
             MainWin win = new MainWin();
@@ -78,18 +41,14 @@ namespace AgrowDesktop.Views
             this.Close();
         }
 
-        //SignUpBtn
+        // SignUpBtn
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            string password = PasswordHidden.Visibility == Visibility.Visible
-            ? PasswordHidden.Password
-            : PasswordVisible.Text;
-
             // CheckEmptyFields
             if (string.IsNullOrWhiteSpace(NicBox.Text) ||
                 string.IsNullOrWhiteSpace(UserNBox.Text) ||
                 string.IsNullOrWhiteSpace(EmailBox.Text) ||
-                string.IsNullOrWhiteSpace(password))
+                string.IsNullOrWhiteSpace(PasswordBox.Password))
             {
                 new MessageWin("Please fill all fields to complete sign up!", false).ShowDialog();
                 return;
@@ -100,23 +59,22 @@ namespace AgrowDesktop.Views
             string result = vm.SignUp(
                 NicBox.Text,
                 UserNBox.Text,
-                password,
+                PasswordBox.Password,
                 EmailBox.Text
             );
 
             bool success = result.ToLower().Contains("success");
 
-            //ShowMsg
+            // ShowMsg
             new MessageWin(result, success).ShowDialog();
 
             //ClearAll
             NicBox.Clear();
             UserNBox.Clear();
             EmailBox.Clear();
-            PasswordHidden.Clear();
-            PasswordVisible.Clear();
+            PasswordBox.Clear();
 
-            //LoadLogin
+            // LoadLogin
             if (success)
             {
                 MainWin loginWin = new MainWin();
