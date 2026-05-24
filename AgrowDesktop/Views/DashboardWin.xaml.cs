@@ -21,6 +21,13 @@ namespace AgrowDesktop.Views
             InitializeComponent();
         }
 
+        // CUSTOM MESSAGE
+        private void ShowMsg(string text, bool success = true)
+        {
+            MessageWin msg = new MessageWin(text, success);
+            msg.ShowDialog();
+        }
+
         // ─────────────────────────────────────────────
         // WINDOW LOADED
         // ─────────────────────────────────────────────
@@ -117,20 +124,12 @@ namespace AgrowDesktop.Views
 
                     LoadAllData();
 
-                    MessageBox.Show(
-                        $"User {action.ToLower()}ed successfully.",
-                        "Success",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    ShowMsg($"User {action.ToLower()}ed successfully.");
                 }
             }
             else
             {
-                MessageBox.Show(
-                    "Please select a user first.",
-                    "No Selection",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                ShowMsg("Please select a user first.", false);
             }
         }
 
@@ -162,20 +161,12 @@ namespace AgrowDesktop.Views
 
                     LoadAllData();
 
-                    MessageBox.Show(
-                        "Product deleted successfully.",
-                        "Deleted",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    ShowMsg("Product deleted successfully.");
                 }
             }
             else
             {
-                MessageBox.Show(
-                    "Please select a product first.",
-                    "No Selection",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                ShowMsg("Please select a product first.", false);
             }
         }
 
@@ -201,12 +192,7 @@ namespace AgrowDesktop.Views
 
                 if (string.IsNullOrWhiteSpace(status))
                 {
-                    MessageBox.Show(
-                        "Invalid status selected.",
-                        "Error",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
-
+                    ShowMsg("Invalid status selected.", false);
                     return;
                 }
 
@@ -214,19 +200,11 @@ namespace AgrowDesktop.Views
 
                 LoadAllData();
 
-                MessageBox.Show(
-                    "Order status updated successfully.",
-                    "Updated",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                ShowMsg("Order status updated successfully.");
             }
             else
             {
-                MessageBox.Show(
-                    "Please select an order and status.",
-                    "No Selection",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                ShowMsg("Please select an order and status.", false);
             }
         }
 
@@ -246,11 +224,7 @@ namespace AgrowDesktop.Views
             {
                 File.WriteAllText(dialog.FileName, csvContent);
 
-                MessageBox.Show(
-                    "Exported successfully!",
-                    "Export Done",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                ShowMsg("Exported successfully!");
             }
         }
 
