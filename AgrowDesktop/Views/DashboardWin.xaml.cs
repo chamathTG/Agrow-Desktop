@@ -28,21 +28,17 @@ namespace AgrowDesktop.Views
             MessageWin message = new MessageWin();
 
             message.ColTxtHandler(text, success);
-            message.OpacityHandler(this);
+            //message.OpacityHandler(this);
             message.ShowDialog();
         }
 
-        // ─────────────────────────────────────────────
         // WINDOW LOADED
-        // ─────────────────────────────────────────────
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadAllData();
         }
 
-        // ─────────────────────────────────────────────
         // LOAD ALL DATA
-        // ─────────────────────────────────────────────
         private void LoadAllData()
         {
             _users = db.GetAllUsers();
@@ -57,9 +53,7 @@ namespace AgrowDesktop.Views
             UpdatePendingBadge();
         }
 
-        // ─────────────────────────────────────────────
         // STAT CARDS
-        // ─────────────────────────────────────────────
         private void UpdateStatCards()
         {
             if (StatTotalUsers != null)
@@ -77,9 +71,7 @@ namespace AgrowDesktop.Views
                 StatPendingOrders.Text = pending.ToString();
         }
 
-        // ─────────────────────────────────────────────
         // PENDING BADGE
-        // ─────────────────────────────────────────────
         private void UpdatePendingBadge()
         {
             if (PendingBadge == null || PendingBadgeText == null)
@@ -98,9 +90,7 @@ namespace AgrowDesktop.Views
             }
         }
 
-        // ─────────────────────────────────────────────
         // USERS
-        // ─────────────────────────────────────────────
         private void LoadUsers_Click(object sender, RoutedEventArgs e)
         {
             _users = db.GetAllUsers();
@@ -137,9 +127,7 @@ namespace AgrowDesktop.Views
             }
         }
 
-        // ─────────────────────────────────────────────
         // PRODUCTS
-        // ─────────────────────────────────────────────
         private void LoadProducts_Click(object sender, RoutedEventArgs e)
         {
             _products = db.GetAllProducts();
@@ -174,9 +162,7 @@ namespace AgrowDesktop.Views
             }
         }
 
-        // ─────────────────────────────────────────────
         // ORDERS
-        // ─────────────────────────────────────────────
         private void LoadOrders_Click(object sender, RoutedEventArgs e)
         {
             _orders = db.GetAllOrders();
@@ -205,16 +191,16 @@ namespace AgrowDesktop.Views
                 LoadAllData();
 
                 ShowMsg("Order status updated successfully.");
+                StatusBox.Items.Clear();
             }
             else
             {
                 ShowMsg("Please select an order and status.", false);
             }
+
         }
 
-        // ─────────────────────────────────────────────
         // EXPORT CSV
-        // ─────────────────────────────────────────────
         private void SaveCsv(string defaultFileName, string csvContent)
         {
             var dialog = new SaveFileDialog
@@ -277,9 +263,7 @@ namespace AgrowDesktop.Views
             SaveCsv("Orders_Export.csv", string.Join("\n", lines));
         }
 
-        // ─────────────────────────────────────────────
         // WINDOW BUTTONS
-        // ─────────────────────────────────────────────
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -287,7 +271,9 @@ namespace AgrowDesktop.Views
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            MainWin home = new MainWin();
+            home.Show();
+            this.Close();
         }
 
         private void TopBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
